@@ -18,5 +18,9 @@ func main() {
 	address := *flagHost + ":" + *flagPort
 	root := http.Dir(*flagRoot)
 	log.Printf("Server started from %s at http://%s", *flagRoot, address)
-	http.ListenAndServe(address, http.FileServer(root))
+
+	err := http.ListenAndServe(address, http.FileServer(root))
+	if err != nil {
+		panic(err)
+	}
 }
