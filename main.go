@@ -19,8 +19,5 @@ func main() {
 	root := http.Dir(*flagRoot)
 	log.Printf("Server started from %s at http://%s", *flagRoot, address)
 
-	err := http.ListenAndServe(address, http.FileServer(root))
-	if err != nil {
-		panic(err)
-	}
+	http.ListenAndServe(address, http.FileServer(root))
 }
